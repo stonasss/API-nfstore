@@ -1,17 +1,11 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
-import { MongoClient } from "mongodb";
-
-dotenv.config();
-const mongoClient = new MongoClient(process.env.DATABASE_URL);
-let db;
-await mongoClient.connect();
-db = mongoClient.db();
+import authRouter from "./routes/authRoutes.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use([authRouter])
 
 const PORT = 5000;
 app.listen(PORT, () => {
