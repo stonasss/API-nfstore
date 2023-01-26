@@ -8,7 +8,6 @@ app.use(express.json());
 app.use(cors());
 app.use([authRouter, infoRouter])
 
-const PORT = 5000;
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log("Servidor aberto");
 });
