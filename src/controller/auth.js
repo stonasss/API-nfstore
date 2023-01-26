@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import db from "../config/database.js";
 
 export async function signUp(req, res) {
-    const { name, email, password, confirmPassword } = req.body;
+    const { username, email, password, confirmPassword } = req.body;
     const passwordHashed = bcrypt.hashSync(password, 10);
 
     try {
@@ -12,7 +12,7 @@ export async function signUp(req, res) {
         if (emailExists) return res.status(400).send("E-mail já cadastrado!");
 
         await db.collection("usuarios").insertOne({
-            name,
+            username,
             email,
             password: passwordHashed,
         });
