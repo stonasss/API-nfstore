@@ -6,3 +6,11 @@ export const userSchema = joi.object({
     password: joi.string().required(),
     confirmPassword: joi.string().valid(joi.ref("password")).required(),
 });
+
+export const itemSchema = joi.object({
+    title: joi.string().required(),
+    subtitle: joi.string().required(),
+    price: joi.number().required(),
+    image: joi.string().uri().required(),
+    description: joi.string().required(),
+});
