@@ -1,7 +1,7 @@
 import db from "../config/database.js";
 
 export async function newProduct(req, res) {
-    const { title, subtitle, price, image, description } = req.body;
+    const { title, subtitle, price, image, description, category } = req.body;
 
     try {
         const productExists = await db
@@ -15,6 +15,7 @@ export async function newProduct(req, res) {
             price,
             image,
             description,
+            category,
         });
         res.status(201).send("Produto cadastrado!");
     } catch (err) {

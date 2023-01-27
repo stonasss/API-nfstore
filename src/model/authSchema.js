@@ -10,8 +10,8 @@ export const userSchema = joi.object({
 });
 
 export const authenticateSchema = joi.object({
-	email: joi.string().email().required(),
-	password: joi.string().required(),
+    email: joi.string().email().required(),
+    password: joi.string().required(),
 });
 
 export const itemSchema = joi.object({
@@ -20,6 +20,7 @@ export const itemSchema = joi.object({
     price: joi.number().required(),
     image: joi.string().uri().required(),
     description: joi.string().required(),
+    category: joi.string().required(),
 });
 
 export class AuthToken {
